@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+category_comedies = Category.create(name: "TV Comedies")
+category_dramas = Category.create(name: "TV Dramas")
+
+Video.create(title: "Futurama", description: "A show about the future!", small_cover_url: '/tmp/futurama.jpg', large_cover_url: '/tmp/futurama.jpg', category: category_comedies )
+Video.create(title: "Monk", description: "Not sure what this show is about.", small_cover_url: '/tmp/monk.jpg', large_cover_url: '/tmp/monk_large.jpg', category: category_dramas)
+Video.create(title: "Family Guy", description: "Family Guy is an American adult animated sitcom created by Seth MacFarlane", small_cover_url: '/tmp/family_guy.jpg', large_cover_url: '/tmp/family_guy.jpg', category: category_comedies)
+Video.create(title: "South Park", description: "South Park is an American adult animated sitcom created by Trey Parker and Matt Stone ", small_cover_url: '/tmp/south_park.jpg', large_cover_url: '/tmp/south_park.jpg', category: category_comedies)
