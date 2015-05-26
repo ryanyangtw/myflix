@@ -8,12 +8,12 @@ RSpec.describe Video, :type => :model do
 
   describe ".search_by_title" do
 
-    #let(:futurama) { Video.create(title: "Futurama", description: "Space Travel!") }
-    #let(:back_to_future) { Video.create(title: "Back to Future", description: "Time Travel!") }
-    before do
-      @futurama = Video.create(title: "Futurama", description: "Space Travel!")
-      @back_to_future = Video.create(title: "Back to Future", description: "Time Travel!")
-    end
+    let(:futurama) { Video.create(title: "Futurama", description: "Space Travel!", created_at: 1.day.ago) }
+    let(:back_to_future) { Video.create(title: "Back to Future", description: "Time Travel!") }
+    # before do
+    #   @futurama = Video.create(title: "Futurama", description: "Space Travel!")
+    #   @back_to_future = Video.create(title: "Back to Future", description: "Time Travel!")
+    # end
 
     it "returns an empty array if there is no match" do
       
@@ -25,7 +25,7 @@ RSpec.describe Video, :type => :model do
       # futurama = Video.create(title: "Futurama", description: "Space Travel!")
       # back_to_future = Video.create(title: "Back to Future", description: "Time Travel!")
 
-      expect(Video.search_by_title("Futurama")).to eq([@futurama])
+      expect(Video.search_by_title("Futurama")).to eq([futurama])
     end
 
 
@@ -33,7 +33,7 @@ RSpec.describe Video, :type => :model do
       # futurama = Video.create(title: "Futurama", description: "Space Travel!")
       # back_to_future = Video.create(title: "Back to Future", description: "Time Travel!")
 
-      expect(Video.search_by_title("urama")).to eq([@futurama])
+      expect(Video.search_by_title("urama")).to eq([futurama])
     end
 
 
@@ -41,7 +41,7 @@ RSpec.describe Video, :type => :model do
       # futurama = Video.create(title: "Futurama", description: "Space Travel!", created_at: 1.day.ago)
       # back_to_future = Video.create(title: "Back to Future", description: "Time Travel!")
 
-      expect(Video.search_by_title("Futur")).to eq([@back_to_future, @futurama])
+      expect(Video.search_by_title("Futur")).to eq([back_to_future, futurama])
     end
 
     it "returns an empty array for a search with an empth string" do
