@@ -12,5 +12,6 @@
  * require bootstrap
  *= require bootstrap_and_customization
  *= require whitespace-reset
+ * require rails_bootstrap_forms
  *= require_tree .
 */
