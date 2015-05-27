@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Category, :type => :model do
 
-  it { should have_many(:videos) }
+  it { is_expected.to have_many(:videos) }
+  #it { should have_many(:videos) }
 
   describe "#recent_videos" do
 

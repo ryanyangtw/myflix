@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Video, :type => :model do
 
-  it { should belong_to(:category) }
-  it { should validate_presence_of(:title) }
-  it { should validate_presence_of(:description) }
+  it { is_expected.to belong_to(:category) }
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:description) }
 
   describe ".search_by_title" do
 
