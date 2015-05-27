@@ -1,4 +1,7 @@
 - flash.each do |name, msg|
+  / Modify class for bootstrap 3
+  - name = {error: "danger", notice: "warning"}[name.to_sym]
+
   %div(class="alert alert-#{name}")
     %a.close(data-dismiss='alert') &#215;
     = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)

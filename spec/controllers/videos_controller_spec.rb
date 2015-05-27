@@ -1,5 +1,5 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-describe VideosController do
+# describe VideosController do
 
-end
+# end
