@@ -8,8 +8,8 @@ RSpec.describe Video, :type => :model do
 
   describe ".search_by_title" do
 
-    let(:futurama) { Video.create(title: "Futurama", description: "Space Travel!", created_at: 1.day.ago) }
-    let(:back_to_future) { Video.create(title: "Back to Future", description: "Time Travel!") }
+    let(:futurama) { Video.create!(title: "Futurama", description: "Space Travel!", created_at: 1.day.ago) }
+    let(:back_to_future) { Video.create!(title: "Back to Future", description: "Time Travel!") }
     # before do
     #   @futurama = Video.create(title: "Futurama", description: "Space Travel!")
     #   @back_to_future = Video.create(title: "Back to Future", description: "Time Travel!")
