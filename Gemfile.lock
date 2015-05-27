@@ -60,6 +60,9 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.7)
     execjs (2.5.2)
+    fabrication (2.13.2)
+    faker (1.4.3)
+      i18n (~> 0.5)
     ffi (1.9.8)
     formatador (0.2.5)
     growl (1.0.3)
@@ -219,6 +222,8 @@ DEPENDENCIES
   bootstrap_form
   coffee-rails
   database_cleaner (= 1.2.0)
+  fabrication
+  faker
   growl
   guard-rspec
   haml-rails
