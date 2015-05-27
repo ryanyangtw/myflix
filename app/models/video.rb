@@ -3,6 +3,7 @@ class Video < ActiveRecord::Base
   #validates_uniqueness_of :title
 
   belongs_to :category
+  has_many :reviews
 
   validates_presence_of :title, :description
 
