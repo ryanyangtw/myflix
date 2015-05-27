@@ -17,7 +17,7 @@ RSpec.describe VideosController, :type => :controller do
       expect(response).to redirect_to sign_in_path
     end
 
-# Too many nested 
+# Too mush nesting 
 =begin
     context "with authenticated users" do
       before do
@@ -47,7 +47,7 @@ RSpec.describe VideosController, :type => :controller do
 =end
   end # end of describe "GET show"
 
-  describe "Get search" do
+  describe "GET search" do
     it "sets @results for authenticated users" do
       session[:user_id] = Fabricate(:user).id
       futurama = Fabricate(:video, title: 'Futurama') # override the default value in video_fabricator
@@ -61,7 +61,7 @@ RSpec.describe VideosController, :type => :controller do
       expect(response).to redirect_to sign_in_path
     end
   end  # end of describe "Get search"
-
+  
 # Solution video using Post to search method. But I use Get
 =begin
   describe "Post search" do
