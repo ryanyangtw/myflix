@@ -4,6 +4,9 @@ RSpec.describe QueueItem, :type => :model do
 
   it { is_expected.to belong_to(:user) } 
   it { is_expected.to belong_to(:video) } 
+  it { is_expected.to delegate_method(:category).to(:video) }
+  it { is_expected.to delegate_method(:title).to(:video).with_prefix(:video) }
+
 
   describe "#video_title" do
     it "returns the title of the associated video" do

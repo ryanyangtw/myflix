@@ -7,7 +7,8 @@ class QueueItemsController < ApplicationController
 
   def create
     video = Video.find(params[:video_id])
-    queue_video(video)
+    #queue_video(video)
+    current_user.queue_video!(video)
     redirect_to my_queue_path
   end
 
@@ -19,13 +20,14 @@ class QueueItemsController < ApplicationController
 
     # My Version
     queue_item = current_user.queue_items.find_by(id: params[:id])
-    queue_item.destroy if queue_item.present?
+    queue_item.destroy if queue_item #queue_item.present?
     redirect_to my_queue_path
 
 
   end
 
 
+=begin
   private
 
   def queue_video(video)
@@ -43,5 +45,6 @@ class QueueItemsController < ApplicationController
     #current_user.queue_items.exists?(video)
     current_user.queue_items.map(&:video).include?(video)
   end
+=end
 
 end
