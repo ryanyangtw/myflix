@@ -11,6 +11,20 @@ class QueueItemsController < ApplicationController
     redirect_to my_queue_path
   end
 
+  def destroy
+    # Teleaf version
+    # queue_item = QueueItem.find(params[:id])
+    # queue_item.destroy if current_user.queue_items.include?(queue_item)
+    # redirect_to my_queue_path
+
+    # My Version
+    queue_item = current_user.queue_items.find_by(id: params[:id])
+    queue_item.destroy if queue_item.present?
+    redirect_to my_queue_path
+
+
+  end
+
 
   private
 
