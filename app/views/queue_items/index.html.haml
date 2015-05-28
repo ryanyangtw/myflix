@@ -20,38 +20,22 @@
                   = queue_item.position
                   / %input.form-control(type="text" value="1")
                 %td
-                  = link_to "Futurama"
+                  = link_to( queue_item.video_title, video_path(queue_item.video) )
+                  / = link_to "Futurama"
                 %td
                   = button_to "Play", nil, class: "btn btn-default"
                 %td
-                  %select.form-group(name="")
-                    %option(value="5") 5 Stars
-                    %option(value="4") 4 Stars
-                    %option(value="3") 3 Stars
-                    %option(value="2") 2 Stars
-                    %option(value="1") 1 Star
+                  = queue_item.rating
+                  / %select.form-group(name="")
+                  /   %option(value="5") 5 Stars
+                  /   %option(value="4") 4 Stars
+                  /   %option(value="3") 3 Stars
+                  /   %option(value="2") 2 Stars
+                  /   %option(value="1") 1 Star
                 %td
-                  = link_to "TV Shows"
+                  = link_to( queue_item.category_name, category_path(queue_item.category) )
+                  / = link_to "TV Shows"
                 %td
                   = link_to "", method: :post do
                     %i.glyphicon.glyphicon-remove
-              / %tr
-              /   %td
-              /     %input.form-control(type="text" value="2")
-              /   %td
-              /     = link_to "Family Guy"
-              /   %td
-              /     = button_to "Play", nil, class: "btn btn-default"
-              /   %td
-              /     %select(name="")
-              /       %option(value="5") 5 Stars
-              /       %option(value="4") 4 Stars
-              /       %option(value="3") 3 Stars
-              /       %option(value="2") 2 Stars
-              /       %option(value="1") 1 Star
-              /   %td
-              /     = link_to "TV Shows"
-              /   %td
-              /     = link_to "", method: :post do
-              /       %i.glyphicon.glyphicon-remove
           = button_to "Update Instant Queue", nil, class: "btn btn-default"

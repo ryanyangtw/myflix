@@ -4,6 +4,7 @@ RSpec.describe Category, :type => :model do
 
   it { is_expected.to have_many(:videos) }
   #it { should have_many(:videos) }
+  it { is_expected.to validate_presence_of(:name) }
 
   describe "#recent_videos" do
 

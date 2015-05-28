@@ -26,8 +26,8 @@ class QueueItemsController < ApplicationController
   end
 
   def current_user_queued_video?(video)
-    current_user.queue_items.exists?(video)
-    #current_user.queue_ietms.map(&:video).include(video)
+    #current_user.queue_items.exists?(video)
+    current_user.queue_items.map(&:video).include?(video)
   end
 
 end
