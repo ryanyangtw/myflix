@@ -1,10 +1,14 @@
 class Video < ActiveRecord::Base
 
   #validates_uniqueness_of :title
+  validates_presence_of :title, :description
+
 
   belongs_to :category
+  has_many :reviews, -> { order(created_at: :desc) }
+  has_many :queue_items
 
-  validates_presence_of :title, :description
+
 
   def self.search_by_title(search_term)
     # return [] if search_term.blank?

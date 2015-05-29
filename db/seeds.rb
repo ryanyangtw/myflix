@@ -40,7 +40,7 @@ Video.create!(title: "Futurama",
               large_cover_url: '/tmp/futurama.jpg',
               category: comedies)
 
-Video.create!(title: "Monk", 
+monk = Video.create!(title: "Monk", 
               description: "Not sure what this show is about.", 
               small_cover_url: '/tmp/monk.jpg', 
               large_cover_url: '/tmp/monk_large.jpg', 
@@ -63,3 +63,18 @@ Video.create!(title: "South Park",
               small_cover_url: '/tmp/south_park.jpg', 
               large_cover_url: '/tmp/south_park.jpg', 
               category: comedies)
+
+
+kevin = User.create!(full_name: "Kevin Wang", 
+                    password: "password", 
+                    email: "kevin@example.com")
+
+Review.create!(user: kevin, 
+              video: monk, 
+              rating: 5, 
+              content: "This is a really good movie!")
+
+Review.create!(user: kevin, 
+               video: monk, 
+               rating: 2, 
+               content: "This is a horrible movie.")
