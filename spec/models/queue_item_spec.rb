@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe QueueItem, :type => :model do
 
+  it { is_expected.to validate_numericality_of(:position).only_integer }
   it { is_expected.to belong_to(:user) } 
   it { is_expected.to belong_to(:video) } 
   it { is_expected.to delegate_method(:category).to(:video) }
