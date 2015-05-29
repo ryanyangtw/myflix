@@ -27,7 +27,7 @@
                   %td
                     = button_to "Play", nil, class: "btn btn-default"
                   %td
-                    = queue_item.rating
+                    = select_tag("queue_items[][rating]", options_for_video_reviews(queue_item.rating), include_blank: true, class: "form-group")
                     / %select.form-group(name="")
                     /   %option(value="5") 5 Stars
                     /   %option(value="4") 4 Stars

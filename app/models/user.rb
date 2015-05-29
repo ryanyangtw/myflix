@@ -18,15 +18,15 @@ class User < ActiveRecord::Base
   end
 
 
-  def update_queue_items!(queue_items_data)
-    ActiveRecord::Base.transaction do
-      queue_items_data.each do |queue_item_data|
-        queue_item = queue_items.find_by(id: queue_item_data["id"])
-        # In rails4 update! is preferred than update_attributes! 
-        queue_item.update!(position: queue_item_data["position"]) if queue_item
-      end
-    end
-  end
+  # def update_queue_items!(queue_items_data)
+  #   ActiveRecord::Base.transaction do
+  #     queue_items_data.each do |queue_item_data|
+  #       queue_item = queue_items.find_by(id: queue_item_data["id"])
+  #       # In rails4 update! is preferred than update_attributes! 
+  #       queue_item.update!(position: queue_item_data["position"]) if queue_item
+  #     end
+  #   end
+  # end
 
   def normalize_queue_item_positions!
     queue_items.each_with_index do |queue_item, index|

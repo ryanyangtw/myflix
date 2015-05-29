@@ -30,7 +30,8 @@ class QueueItemsController < ApplicationController
   # queue_items: [{id: 4, positiion: 3}, {id: 2, position: 1}]
   def update_queue
     begin
-      current_user.update_queue_items!(params[:queue_items])
+      #current_user.update_queue_items!(params[:queue_items])
+      update_queue_items
       current_user.normalize_queue_item_positions!
     rescue ActiveRecord::RecordInvalid
       flash[:error] = "Invalid position numbers."
@@ -57,6 +58,21 @@ class QueueItemsController < ApplicationController
 =end
 
 
+  private
+  # We don't move these code into model because this is too tight with form
+  # We don't want to be model tightly couple with the form
+  def update_queue_items
+    ActiveRecord::Base.transaction do
+      params[:queue_items].each do |queue_item_data|
+        #queue_item = QueueItem.find(queue_item_data["id"])
+        #queue_item.update_attributes!(position: queue_item_data["position"]) if queue_item.user == current_user
+        queue_item = current_user.queue_items.find_by(id: queue_item_data["id"])
+        # In rails4 update! is preferred than update_attributes! 
+        queue_item.update!(position: queue_item_data["position"], rating: queue_item_data["rating"]) if queue_item
+      end
+    end
+  end
+
 =begin
   private
 
@@ -74,16 +90,6 @@ class QueueItemsController < ApplicationController
   def current_user_queued_video?(video)
     #current_user.queue_items.exists?(video)
     current_user.queue_items.map(&:video).include?(video)
-  end
-
-
-  def update_queue_items
-    ActiveRecord::Base.transaction do
-      params[:queue_items].each do |queue_item_data|
-        queue_item = QueueItem.find(queue_item_data["id"])
-        queue_item.update_attributes!(position: queue_item_data["position"]) if queue_item.user == current_user
-      end
-    end
   end
 
   def normalize_queue_item_positions
