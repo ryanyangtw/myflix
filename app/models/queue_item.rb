@@ -52,7 +52,7 @@ class QueueItem < ActiveRecord::Base
   private 
 
   def review
-    # memorization
+    # Memoization
     @review ||= Review.find_by(user_id: user.id, video_id: video.id)
   end
 
