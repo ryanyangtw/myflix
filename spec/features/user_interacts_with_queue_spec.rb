@@ -8,7 +8,6 @@ feature "User interacts with the queue" do
     south_park = Fabricate(:video, title: "South Park", category: comedies)
     futurama = Fabricate(:video, title: "Futurama", category: comedies)
 
-    # We want to make all of process to on the same abstract level
     sign_in
 
     add_video_to_queue(monk)
@@ -29,28 +28,6 @@ feature "User interacts with the queue" do
     expect_video_position(futurama, 2)
     expect_video_position(monk, 3)
 
-    # Base on data-atribute
-    # find("input[data-video-id='#{monk.id}']").set(3)
-    # find("input[data-video-id='#{south_park.id}']").set(1)
-    # find("input[data-video-id='#{futurama.id}']").set(2)
-
-    # click_button "Updates Instant Queue"
-
-    # expect(find("input[data-video-id='#{south_park.id}']").value).to eq("1")
-    # expect(find("input[data-video-id='#{futurama.id}']").value).to eq("2")
-    # expect(find("input[data-video-id='#{monk.id}']").value).to eq("3")
-
-
-    # Base on id
-    # fill_in "video_#{monk.id}", with: 3
-    # fill_in "video_#{south_park.id}", with: 1
-    # fill_in "video_#{futurama.id}", with: 2
-
-    # click_button "Updates Instant Queue"
-
-    # expect(find("#video_#{south_park.id}").value).to eq("1")
-    # expect(find("#video_#{futurama.id}").value).to eq("2")
-    # expect(find("#video_#{monk.id}").value).to eq("3")
   end
 
   def expect_video_to_be_in_queue(video)

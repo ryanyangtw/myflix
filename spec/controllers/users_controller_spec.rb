@@ -20,14 +20,10 @@ RSpec.describe UsersController, :type => :controller do
       end
 
       it "creates the user" do
-        # Fabricate.attributes_for(:user) is like User.new
-        # post :create, user: { email: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
-        # post :create, user: Fabricate.attributes_for(:user)
         expect(User.count).to eq(1)
       end
 
       it "redirects to the sign in page" do
-        # post :create, user: Fabricate.attributes_for(:user)
         expect(response).to redirect_to sign_in_path
       end
     end # end of context "with valid input"
