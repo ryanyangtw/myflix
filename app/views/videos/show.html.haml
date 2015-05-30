@@ -11,7 +11,7 @@
         %p= simple_format(@video.description)
         .actions
           %a.btn.btn-primary(href="") Watch Now
-          = link_to("+ My Queue", queue_items_path(video_id: @video.id), method: :post, class: "btn btn-default")
+          = link_to("+ My Queue", queue_items_path(video_id: @video.id), method: :post, class: "btn btn-default") unless current_user.queued_video?(@video)
           / %a.btn.btn-default(href="") + My Queue
 
 %section.reviews.container
@@ -24,7 +24,7 @@
             %label Rate this video
             .row
               .col-sm-3
-                = f.select(:rating, options_for_select([5,4,3,2,1].map { |number| [pluralize(number, "Star"), number] }), {}, {class: "form-control"})
+                = f.select(:rating, options_for_video_reviews, {}, {class: "form-control"})
                 / %select.form-control(name="")
                 /   %option(value="5") 5 Stars
                 /   %option(value="4") 4 Stars
