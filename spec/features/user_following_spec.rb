@@ -12,12 +12,21 @@ feature 'User following' do
     sign_in
     click_on_video_on_home_page(video)
 
-    click_link alice.full_name
-    click_link "Follow"
+    click_reviewer_name_on_video_page(alice)
+    follow_the_user_on_user_page
     expect(page).to have_content(alice.full_name)
 
     unfollow(alice)
     expect(page).not_to have_content(alice.full_name)
+  end
+
+
+  def click_reviewer_name_on_video_page(user)
+    click_link user.full_name
+  end
+
+  def follow_the_user_on_user_page
+    click_link "Follow"
   end
 
   def unfollow(user)
@@ -25,5 +34,5 @@ feature 'User following' do
     find("a[href='#{href}']").click
     # find("a[data-method='delete']").click  # Because I change the sign_out link to delete method
   end
-
+  
 end
