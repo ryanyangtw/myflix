@@ -10,6 +10,11 @@ RSpec.describe User, :type => :model do
   it { is_expected.to have_many(:following_relationships).class_name('Relationship').with_foreign_key(:follower_id) }
   it { is_expected.to have_many(:leading_relationships).class_name('Relationship').with_foreign_key(:leader_id) }
 
+  it "generates a random token when the user is created" do
+    alice = Fabricate(:user)
+    expect(alice.token).to be_present
+  end
+
   describe "#queued_video?" do
     it "returns true when the user queued the video" do
       user = Fabricate(:user)
