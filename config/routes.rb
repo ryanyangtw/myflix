@@ -18,7 +18,7 @@ Myflix::Application.routes.draw do
   delete 'sign_out', to: "sessions#destroy"
 
   get 'people', to: 'relationships#index'
-  resources :relationships, only: [:destroy]
+  resources :relationships, only: [:create, :destroy]
   resources :users, only: [:show, :create]
   resources :sessions, only: :create
   resources :queue_items, only: [:create, :destroy]

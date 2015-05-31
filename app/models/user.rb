@@ -19,13 +19,18 @@ class User < ActiveRecord::Base
     queue_items.map(&:video).include?(video)
   end
 
-
-
-
   def normalize_queue_item_positions!
     queue_items.each_with_index do |queue_item, index|
       queue_item.update(position: index+1)
     end
+  end
+
+  def follows?(another_user)
+    following_relationships.map(&:leader).include?(another_user)
+  end
+
+  def can_follow?(another_user)
+    !self.follows?(another_user) && self != another_user
   end
 
 
