@@ -52,6 +52,29 @@ RSpec.describe UsersController, :type => :controller do
       end
     end # end of context "with invalid input"
 
+
+    context "sending emails" do
+      # Email sending is added to ActionMailer::Base.deliveries queue.
+      # There are not part of database transaction. So this will not be rollback.
+      # We have to do something to make sure after every spec run, The ActionMailer::Base.deliveries queue also be restored
+      after { ActionMailer::Base.deliveries.clear } 
+
+      it "sends out email to the user with valid inputs" do
+        post :create, user: { email: "joe@example.com", password: "password", full_name: "Joe Smith" }
+        expect(ActionMailer::Base.deliveries.last.to).to eq(['joe@example.com'])
+      end
+
+      it "sends out email containing the user's name with valid inputs" do
+        post :create, user: { email: "joe@example.com", password: "password", full_name: "Joe Smith" }
+        expect(ActionMailer::Base.deliveries.last.body).to include("Joe Smith")
+      end
+
+      it "does not send out email with invalid inputs" do
+        post :create, user: { email: "joe@example.com" }
+        expect(ActionMailer::Base.deliveries).to be_empty
+      end
+    end # end of context "sending emails"
+
   end # end of describe "POST create"
 
 
