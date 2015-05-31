@@ -26,4 +26,21 @@ RSpec.describe User, :type => :model do
     end
   end # end of describe "#queued_video?"
 
+  
+  describe "#follows?" do
+    it "returns true if the user has a following relationship with another user" do
+      alice = Fabricate(:user)
+      bob = Fabricate(:user)
+      Fabricate(:relationship, leader: bob, follower: alice)
+      expect(alice.follows?(bob)).to be true
+    end
+    
+    it "returns false if the user does not have a following relationship with another user" do
+      alice = Fabricate(:user)
+      bob = Fabricate(:user)
+      Fabricate(:relationship, leader: alice, follower: bob)
+      expect(alice.follows?(bob)).to be false
+    end
+  end #end of describe "#follows?"
+
 end
