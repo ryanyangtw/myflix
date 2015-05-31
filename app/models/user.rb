@@ -5,8 +5,13 @@ class User < ActiveRecord::Base
 
   has_secure_password validations: false
 
-  has_many :reviews, -> { order(created_at: :desc) }
+  has_many :reviews, -> { order(created_at: :desc) } 
   has_many :queue_items, -> { order(:position) } # default is asc
+  has_many :following_relationships, class_name: "Relationship", foreign_key: :follower_id # Default will use user_id as foreign_key
+  # has_many :leaders, through: :following_relationships # , source: :leader
+  has_many :leading_relationships, class_name: "Relationship", foreign_key: :leader_id
+  # has_many :followers, through: :leading_relationships # , source: :follower
+
 
   def queue_video!(video)
     queue_items.create(video: video, 
