@@ -1,15 +1,14 @@
 %section#top-header.row
   %h1.col-md-2
-    = link_to "MyFLiX"
+    = link_to "MyFLiX", home_path
 
   - if current_user
     %ul.col-md-4.clearfix
-      %li= link_to "Videos"
+      %li= link_to "Videos", home_path
       %li= link_to "My Queue", my_queue_path
-      %li= link_to "People"
+      %li= link_to "People", people_path
 
     = form_tag(search_videos_path, method: :get, enforce_utf8: false, class: "col-md-5 navbar-form") do
-      / %form.col-md-5.navbar-form(action="")
       .form-group
         %input.form-control(name="search_term" type="text" placeholder="Search for videos here")
       %button.btn.btn-default(type="submit") Search
@@ -24,4 +23,3 @@
               %a(href="#") Account
               %a(href="#") Plan and Billing
               = link_to( "Sign out", sign_out_path, method: :delete )
-              / %a(href="#") Sign Out

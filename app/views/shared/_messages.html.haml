@@ -1,6 +1,6 @@
 - flash.each do |name, msg|
   / Modify class for bootstrap 3
-  - name = {error: "danger", notice: "warning"}[name.to_sym]
+  - name = {error: "danger", notice: "warning", success: "success"}[name.to_sym]
 
   %div(class="alert alert-#{name}")
     %a.close(data-dismiss='alert') &#215;

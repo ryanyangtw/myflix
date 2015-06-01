@@ -5,9 +5,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-
-    # Since Rails 4, .find_by is preferred method for searching a single record. .where(args).first is less effective.
-    # user = User.where(email: params[:email]).first
     user = User.find_by(email: params[:email])
 
 

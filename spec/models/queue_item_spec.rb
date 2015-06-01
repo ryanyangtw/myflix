@@ -32,7 +32,6 @@ RSpec.describe QueueItem, :type => :model do
       user = Fabricate(:user)
       queue_item = Fabricate(:queue_item, user: user, video: video)
       expect(queue_item.rating).to eq(nil)
-      #expect(queue_item.rating).to be_nil
     end
   end
 
@@ -45,7 +44,6 @@ RSpec.describe QueueItem, :type => :model do
       queue_item = Fabricate(:queue_item, user: user, video: video)
       queue_item.rating = 4
       expect(Review.first.rating).to eq(4)
-      #expect(review.reload.rating).to eq(4)
     end
 
     it "clears the rating of the review if the review is present" do

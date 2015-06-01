@@ -53,7 +53,6 @@ RSpec.describe ReviewsController, :type => :controller do
         end
 
         it "sets @reviws" do
-          # We need create review before the post action in this test case
           review = Fabricate(:review, video: video)
           post :create, review: {rating: 4}, video_id: video.id
           expect(assigns(:reviews)).to match_array([review])
