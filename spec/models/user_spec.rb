@@ -10,9 +10,20 @@ RSpec.describe User, :type => :model do
   it { is_expected.to have_many(:following_relationships).class_name('Relationship').with_foreign_key(:follower_id) }
   it { is_expected.to have_many(:leading_relationships).class_name('Relationship').with_foreign_key(:leader_id) }
 
-  it "generates a random token when the user is created" do
-    alice = Fabricate(:user)
-    expect(alice.token).to be_present
+  describe '#create_token!' do
+    it "create new token" do
+      alice = Fabricate(:user)
+      alice.create_token!
+      expect(alice.token).to be_present
+    end
+  end
+
+  describe '#destroy_token!' do
+    it "destroy the token" do
+      alice = Fabricate(:user)
+      alice.destroy_token!
+      expect(alice.token).to be_nil
+    end
   end
 
   describe "#queued_video?" do

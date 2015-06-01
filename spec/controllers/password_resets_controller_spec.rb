@@ -47,12 +47,13 @@ RSpec.describe PasswordResetsController, :type => :controller do
         expect(flash[:success]).to be_present  
       end
 
-      it "refenerates the user token" do
+      it "destroy the user token" do
         alice = Fabricate(:user, password: 'old_password')
         alice.update_columns(token: '12345')
         post :create, token: '12345', password: 'new_password'
-        expect(alice.reload.token).not_to eq('12345') 
+        expect(alice.reload.token).to be_nil
       end
+
     end
 
     context "with invalid token" do

@@ -8,7 +8,7 @@ RSpec.describe QueueItemsController, :type => :controller do
       set_current_user(alice)
 
       queue_item1 = Fabricate(:queue_item, user: alice) 
-      queue_item2 = Fabricate(:queue_item, user: alice,) 
+      queue_item2 = Fabricate(:queue_item, user: alice) 
 
       get :index
       expect(assigns(:queue_items)).to match_array([queue_item1, queue_item2])
