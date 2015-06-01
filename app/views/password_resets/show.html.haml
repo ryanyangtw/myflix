@@ -10,8 +10,10 @@
           / %label New Password
           .row
             .col-sm-4
-              = text_field_tag(:password, nil, class: "form-control", type: "password")
+              = password_field_tag(:password, nil, class: "form-control")
+              / = text_field_tag(:password, nil, class: "form-control", type: "password")
               = hidden_field_tag(:token, @token)
               / %input.form-control(type="password")
         %fieldset.form-group.action
-          %input(type="submit" value="Reset Password" class="btn btn-default")
+          = submit_tag("Reset Password", class: "btn btn-default")
+          / %input(type="submit" value="Reset Password" class="btn btn-default")
