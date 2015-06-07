@@ -10,7 +10,7 @@ RSpec.describe QueueItemsController, :type => :controller do
       #vedio1 = Fabricate(:video)
       #vedio2 = Fabricate(:video)
       queue_item1 = Fabricate(:queue_item, user: alice) #, video: vedio1
-      queue_item2 = Fabricate(:queue_item, user: alice,) # video: vedio2
+      queue_item2 = Fabricate(:queue_item, user: alice) # video: vedio2
 
       get :index
       expect(assigns(:queue_items)).to match_array([queue_item1, queue_item2])
