@@ -63,4 +63,19 @@ RSpec.describe User, :type => :model do
     end
   end #end of describe "#follows?"
 
+  describe "#follow" do
+    it "follows another user" do
+      alice = Fabricate(:user)
+      bob = Fabricate(:user)
+      alice.follow(bob)
+      expect(alice.follows?(bob)).to be true
+    end
+
+    it "does not follow one self" do
+      alice = Fabricate(:user)
+      alice.follow(alice)
+      expect(alice.follows?(alice)).to be false
+    end
+
+  end
 end
