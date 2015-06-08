@@ -10,6 +10,8 @@ feature 'User resets password' do
     sign_in_with_valid_password(alice)
 
     expect(page).to have_content("Welcome, #{alice.full_name}")
+
+    clear_email
   end
 
   def request_password_reset_email(user)
