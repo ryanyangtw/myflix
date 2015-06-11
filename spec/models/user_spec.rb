@@ -10,6 +10,10 @@ RSpec.describe User, :type => :model do
   it { is_expected.to have_many(:following_relationships).class_name('Relationship').with_foreign_key(:follower_id) }
   it { is_expected.to have_many(:leading_relationships).class_name('Relationship').with_foreign_key(:leader_id) }
 
+  it_behaves_like "tokenable" do
+    let(:object) { Fabricate(:user) }
+  end
+
   describe '#create_token!' do
     it "create new token" do
       alice = Fabricate(:user)
