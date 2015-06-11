@@ -20,6 +20,9 @@ gem "figaro"
 
 gem 'sidekiq'
 
+gem 'unicorn'
+gem 'rack-timeout'
+
 group :development do
   gem 'thin'
   gem "better_errors"
