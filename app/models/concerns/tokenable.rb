@@ -17,6 +17,9 @@ module Tokenable
     self.update_columns(token: nil)
   end
 
+
+  private
+
   def generate_token 
     loop do
       token =  SecureRandom.urlsafe_base64
