@@ -15,6 +15,10 @@ RSpec.describe User, :type => :model do
   #   expect(alice.token).to be_present
   # end
 
+  it_behaves_like "tokenable" do
+    let(:object) { Fabricate(:user) }
+  end
+
   describe '#create_token!' do
     it "create new token" do
       alice = Fabricate(:user)
