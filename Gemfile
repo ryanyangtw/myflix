@@ -18,6 +18,8 @@ gem 'faker'
 
 gem "figaro"
 
+gem 'sidekiq'
+
 group :development do
   gem 'thin'
   gem "better_errors"
