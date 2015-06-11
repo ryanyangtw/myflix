@@ -3,6 +3,8 @@ class Invitation < ActiveRecord::Base
 
   validates_presence_of :recipient_name, :recipient_email, :message 
 
+  after_create :create_token!
+
   def create_token!
     self.update_columns(token: generate_token)
   end

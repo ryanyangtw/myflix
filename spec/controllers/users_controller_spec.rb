@@ -19,6 +19,8 @@ RSpec.describe UsersController, :type => :controller do
         post :create, user: Fabricate.attributes_for(:user)
       end
 
+      after { ActionMailer::Base.deliveries.clear }
+
       it "creates the user" do
         # Fabricate.attributes_for(:user) is like User.new
         # post :create, user: { email: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
@@ -34,7 +36,7 @@ RSpec.describe UsersController, :type => :controller do
       it "makes the user follow the inviter" do
         alice = Fabricate(:user)
         invitation = Fabricate(:invitation, inviter: alice, recipient_email: 'joe@example.com')
-        invitation.create_token!
+        # invitation.create_token!
         post :create, user: { email: 'joe@example.com', password: "password", full_name: 'Jod Doe' }, invitation_token: invitation.token
         joe = User.find_by(email: 'joe@example.com')
         expect(joe.follows?(alice)).to be true
@@ -43,7 +45,7 @@ RSpec.describe UsersController, :type => :controller do
       it "makse the inviter follow the user" do
         alice = Fabricate(:user)
         invitation = Fabricate(:invitation, inviter: alice, recipient_email: 'joe@example.com')
-        invitation.create_token!
+        # invitation.create_token!
         post :create, user: { email: 'joe@example.com', password: "password", full_name: 'Jod Doe' }, invitation_token: invitation.token
         joe = User.find_by(email: 'joe@example.com')
         expect(alice.follows?(joe)).to be true
@@ -52,7 +54,7 @@ RSpec.describe UsersController, :type => :controller do
       it "expires the invitation upon acceptance" do
         alice = Fabricate(:user)
         invitation = Fabricate(:invitation, inviter: alice, recipient_email: 'joe@example.com')
-        invitation.create_token!
+        # invitation.create_token!
         post :create, user: { email: 'joe@example.com', password: "password", full_name: 'Jod Doe' }, invitation_token: invitation.token
         expect(Invitation.first.token).to be_nil
         # expect(invitation.reload.token).to be_nil
@@ -123,21 +125,21 @@ RSpec.describe UsersController, :type => :controller do
   describe "GET new_with_invitation_token" do
     it "renders the :new view template" do
       invitation = Fabricate(:invitation)
-      invitation.create_token!
+      # invitation.create_token!
       get :new_with_invitation_token, token: invitation.token
       expect(response).to render_template :new
     end
 
     it "sets @user with recipient's email" do
       invitation = Fabricate(:invitation)
-      invitation.create_token!
+      # invitation.create_token!
       get :new_with_invitation_token, token: invitation.token
       expect(assigns(:user).email).to eq(invitation.recipient_email)
     end
 
     it "sets @Invitation_token" do
       invitation = Fabricate(:invitation)
-      invitation.create_token!
+      # invitation.create_token!
       get :new_with_invitation_token, token: invitation.token
       expect(assigns(:invitation_token)).to eq(invitation.token)
     end
