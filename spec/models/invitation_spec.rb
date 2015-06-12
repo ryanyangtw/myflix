@@ -1,4 +1,6 @@
+require 'spec_helper'
 require 'rails_helper'
+
 
 RSpec.describe Invitation, :type => :model do
   it { should validate_presence_of(:recipient_name) }
