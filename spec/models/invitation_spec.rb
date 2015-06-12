@@ -1,5 +1,5 @@
-require 'spec_helper'
 require 'rails_helper'
+require_relative '../../app/models/invitation.rb'
 
 
 RSpec.describe Invitation, :type => :model do
