@@ -23,6 +23,8 @@ gem 'sidekiq'
 gem 'unicorn'
 gem 'rack-timeout'
 
+gem "sentry-raven"
+
 group :development do
   gem 'thin'
   gem "better_errors"

@@ -18,6 +18,8 @@ Myflix::Application.configure do
 
   config.active_support.deprecation = :notify
 
+  config.action_dispatch.show_exceptions = false
+
   # Add for sending email
   config.action_mailer.default_url_options = { host: 'https://ryan-myflix.herokuapp.com' }
 
