@@ -20,10 +20,6 @@ gem "figaro"
 
 gem 'sidekiq'
 
-gem 'unicorn'
-gem 'rack-timeout'
-
-gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 
 group :development do
   gem 'thin'
@@ -48,7 +44,14 @@ group :test do
   gem 'capybara-email'
 end
 
-group :production do
+group :staging, :production do
   gem 'rails_12factor'
+  gem 'unicorn'
+  gem 'rack-timeout'
+  gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
+end
+
+group :staging do
+  gem 'recipient_interceptor'
 end
 

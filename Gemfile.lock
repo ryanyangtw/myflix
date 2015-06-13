@@ -184,6 +184,8 @@ GEM
     rb-fsevent (0.9.5)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    recipient_interceptor (0.1.2)
+      mail
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
@@ -286,6 +288,7 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.1.1)
   rails_12factor
+  recipient_interceptor
   rspec-rails (~> 3.2.0)
   sass-rails
   sentry-raven!
