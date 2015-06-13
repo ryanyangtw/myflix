@@ -21,8 +21,8 @@ Myflix::Application.configure do
   config.action_dispatch.show_exceptions = false
 
   # Add for sending email
-  config.action_mailer.default_url_options = { host: 'https://ryan-myflix.herokuapp.com' }
-  
+  config.action_mailer.default_url_options = { host: 'https://ryan-myflix-staging.herokuapp.com' }
+
   ActionMailer::Base.smtp_settings = {
     :port           => ENV['MAILGUN_SMTP_PORT'],
     :address        => ENV['MAILGUN_SMTP_SERVER'],
@@ -32,4 +32,6 @@ Myflix::Application.configure do
     :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
+
+  Mail.register_interceptor RecipientInterceptor.new(ENV['EMAIL_RECIPIENTS'])
 end

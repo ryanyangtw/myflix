@@ -10,6 +10,10 @@ RSpec.describe User, :type => :model do
   it { is_expected.to have_many(:following_relationships).class_name('Relationship').with_foreign_key(:follower_id) }
   it { is_expected.to have_many(:leading_relationships).class_name('Relationship').with_foreign_key(:leader_id) }
 
+  it_behaves_like "tokenable" do
+    let(:object) { Fabricate(:user) }
+  end
+
   describe '#create_token!' do
     it "create new token" do
       alice = Fabricate(:user)
@@ -56,5 +60,22 @@ RSpec.describe User, :type => :model do
       expect(alice.follows?(bob)).to be false
     end
   end #end of describe "#follows?"
+
+
+  describe "#follow" do
+    it "follows another user" do
+      alice = Fabricate(:user)
+      bob = Fabricate(:user)
+      alice.follow(bob)
+      expect(alice.follows?(bob)).to be true
+    end
+
+    it "does not follow one self" do
+      alice = Fabricate(:user)
+      alice.follow(alice)
+      expect(alice.follows?(alice)).to be false
+    end
+
+  end
 
 end

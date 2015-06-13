@@ -18,6 +18,9 @@ gem 'faker'
 
 gem "figaro"
 
+gem 'sidekiq'
+
+
 group :development do
   gem 'thin'
   gem "better_errors"
@@ -38,9 +41,17 @@ group :test do
   gem 'database_cleaner', '1.2.0'
   gem 'capybara'
   gem 'launchy' # save_and_open_page
+  gem 'capybara-email'
 end
 
-group :production do
+group :staging, :production do
   gem 'rails_12factor'
+  gem 'unicorn'
+  gem 'rack-timeout'
+  gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
+end
+
+group :staging do
+  gem 'recipient_interceptor'
 end
 

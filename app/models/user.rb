@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-
+  include Tokenable
+  
   validates_presence_of :email, :password, :full_name
   validates_uniqueness_of :email
 
@@ -30,16 +31,12 @@ class User < ActiveRecord::Base
     following_relationships.map(&:leader).include?(another_user)
   end
 
+  def follow(another_user)
+    following_relationships.create(leader: another_user) if can_follow?(another_user)
+  end
+
   def can_follow?(another_user)
     !self.follows?(another_user) && self != another_user
-  end
-
-  def create_token!
-    self.update_columns(token: generate_token)
-  end
-
-  def destroy_token!
-    self.update_columns(token: nil)
   end
 
 
@@ -47,13 +44,6 @@ class User < ActiveRecord::Base
  
   def new_queue_item_position
     queue_items.count + 1
-  end
-
-  def generate_token 
-    loop do
-      token =  SecureRandom.urlsafe_base64
-      break token unless User.find_by(token: token)
-    end
   end
 
 end
