@@ -13,6 +13,7 @@
         %tr
           %td
             = image_tag gravatar_for(relationship.leader.email.downcase)
+            = link_to(relationship.leader.full_name, relationship.leader)
           %td.extra-padding= relationship.leader.queue_items.count
           %td.extra-padding= relationship.leader.leading_relationships.count
           %td.extra-padding
