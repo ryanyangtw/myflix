@@ -42,4 +42,6 @@ Myflix::Application.configure do
     :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
+
+  Mail.register_interceptor RecipientInterceptor.new(ENV['EMAIL_RECIPIENTS'])
 end
