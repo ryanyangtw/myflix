@@ -18,7 +18,7 @@
             / %label Friend's Email Address
             .row
               .col-sm-4
-                = f.text_field(:recipient_email, class: "form-contol", label: "Friend's Email Address")
+                = f.email_field(:recipient_email, class: "form-contol", label: "Friend's Email Address")
                 / %input.form-control(type="email")
           .form-group
             / = f.label :messaeg

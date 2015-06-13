@@ -24,6 +24,5 @@ class PasswordResetsController < ApplicationController
     end
   end
 
-  def expired_token
-  end
+  def expired_token; end
 end
