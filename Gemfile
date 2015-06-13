@@ -53,3 +53,7 @@ group :production do
 
 end
 
+group :staging do
+  gem 'recipient_interceptor'
+end
+
