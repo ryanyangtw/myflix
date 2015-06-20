@@ -20,6 +20,11 @@ gem "figaro"
 
 gem 'sidekiq'
 
+gem 'carrierwave', "~> 0.10.0"
+gem 'carrierwave-aws'
+gem 'mini_magick'
+
+gem 'stripe'
 
 group :development do
   gem 'thin'
