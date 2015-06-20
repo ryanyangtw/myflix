@@ -6,6 +6,14 @@ shared_examples "requires sign in" do
   end
 end
 
+shared_examples "requires admin" do
+  it "redirects to the home page" do
+    session[:user_id] = Fabricate(:user).id
+    action
+    expect(response).to redirect_to home_path
+  end
+end
+
 shared_examples "tokenable" do
   describe "#create_token!" do
     it "generates a random token" do

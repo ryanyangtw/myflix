@@ -27,7 +27,9 @@ RSpec.describe InvitationsController, :type => :controller do
       
       it "creates an invitation" do
         set_current_user
-        post :create, invitation: { recipient_name: "Joe Smith", recipient_email: "joe@example.com", message: "Hey join Myflix!" }
+        post :create, invitation: { recipient_name: "Joe Smith", 
+                                    recipient_email: "joe@example.com", 
+                                    message: "Hey join Myflix!" }
         expect(Invitation.count).to eq(1)
       end
       
