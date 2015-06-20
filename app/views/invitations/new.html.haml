@@ -18,4 +18,4 @@
               .col-sm-6
                 = f.text_area(:message, class: "form-control", rows: 6, placeholder: "Please join this really cool site!", label: "Message")
         %fieldset.form-group.action
-          %input(type="submit" value="Send Invitation" class="btn btn-default")
+          = f.submit("Send Invitation", class: "btn btn-default")
