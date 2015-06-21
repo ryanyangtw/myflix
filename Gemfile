@@ -47,6 +47,9 @@ group :test do
   gem 'capybara'
   gem 'launchy' # save_and_open_page
   gem 'capybara-email'
+  gem 'vcr'
+  # gem 'webmock'
+  gem 'fakeweb'
 end
 
 group :staging, :production do

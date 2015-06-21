@@ -1,0 +1,238 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/tokens
+    body:
+      encoding: US-ASCII
+      string: card[number]=4242424242424242&card[exp_month]=6&card[exp_year]=2018&card[cvc]=314
+    headers:
+      accept:
+      - "*/*; q=0.5, application/xml"
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Stripe/v1 RubyBindings/1.22.0
+      authorization:
+      - Bearer sk_test_4RY761zzTqgVHQNB5ciHEW9X
+      content-type:
+      - application/x-www-form-urlencoded
+      x-stripe-client-user-agent:
+      - '{"bindings_version":"1.22.0","lang":"ruby","lang_version":"2.2.2 p95 (2015-04-13)","platform":"x86_64-darwin14","engine":"ruby","publisher":"stripe","uname":"Darwin
+        Ryans-Air.local 14.3.0 Darwin Kernel Version 14.3.0: Mon Mar 23 11:59:05 PDT
+        2015; root:xnu-2782.20.48~5/RELEASE_X86_64 x86_64","hostname":"Ryans-Air.local"}'
+      content-length:
+      - '81'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Sun, 21 Jun 2015 12:27:21 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '763'
+      connection:
+      - keep-alive
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      access-control-allow-origin:
+      - "*"
+      access-control-max-age:
+      - '300'
+      cache-control:
+      - no-cache, no-store
+      request-id:
+      - req_z1jj4ot5JGp96lpf
+      stripe-version:
+      - '2014-07-22'
+      strict-transport-security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "tok_16G7Xh4E0ggiBrh4MrPpapib",
+          "livemode": false,
+          "created": 1434889641,
+          "used": false,
+          "object": "token",
+          "type": "card",
+          "card": {
+            "id": "card_16G7Xh4E0ggiBrh4ag6sRN2N",
+            "object": "card",
+            "last4": "4242",
+            "brand": "Visa",
+            "funding": "credit",
+            "exp_month": 6,
+            "exp_year": 2018,
+            "fingerprint": "IUZs3RUUkrXeg5B2",
+            "country": "US",
+            "name": null,
+            "address_line1": null,
+            "address_line2": null,
+            "address_city": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_country": null,
+            "cvc_check": null,
+            "address_line1_check": null,
+            "address_zip_check": null,
+            "dynamic_last4": null,
+            "metadata": {},
+            "customer": null
+          },
+          "client_ip": "111.80.191.172"
+        }
+    http_version: '1.1'
+  recorded_at: Sun, 21 Jun 2015 12:36:58 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/charges
+    body:
+      encoding: US-ASCII
+      string: amount=999&currency=usd&source=tok_16G7Xh4E0ggiBrh4MrPpapib&description=a%20valid%20charge
+    headers:
+      accept:
+      - "*/*; q=0.5, application/xml"
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Stripe/v1 RubyBindings/1.22.0
+      authorization:
+      - Bearer sk_test_4RY761zzTqgVHQNB5ciHEW9X
+      content-type:
+      - application/x-www-form-urlencoded
+      x-stripe-client-user-agent:
+      - '{"bindings_version":"1.22.0","lang":"ruby","lang_version":"2.2.2 p95 (2015-04-13)","platform":"x86_64-darwin14","engine":"ruby","publisher":"stripe","uname":"Darwin
+        Ryans-Air.local 14.3.0 Darwin Kernel Version 14.3.0: Mon Mar 23 11:59:05 PDT
+        2015; root:xnu-2782.20.48~5/RELEASE_X86_64 x86_64","hostname":"Ryans-Air.local"}'
+      content-length:
+      - '90'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Sun, 21 Jun 2015 12:27:22 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '2017'
+      connection:
+      - keep-alive
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      access-control-allow-origin:
+      - "*"
+      access-control-max-age:
+      - '300'
+      cache-control:
+      - no-cache, no-store
+      request-id:
+      - req_5LLcqwbsekI4pjyF
+      stripe-version:
+      - '2014-07-22'
+      strict-transport-security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "ch_16G7Xi4E0ggiBrh4tJAHuD8l",
+          "object": "charge",
+          "created": 1434889642,
+          "livemode": false,
+          "paid": true,
+          "status": "paid",
+          "amount": 999,
+          "currency": "usd",
+          "refunded": false,
+          "source": {
+            "id": "card_16G7Xh4E0ggiBrh4ag6sRN2N",
+            "object": "card",
+            "last4": "4242",
+            "brand": "Visa",
+            "funding": "credit",
+            "exp_month": 6,
+            "exp_year": 2018,
+            "fingerprint": "IUZs3RUUkrXeg5B2",
+            "country": "US",
+            "name": null,
+            "address_line1": null,
+            "address_line2": null,
+            "address_city": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_country": null,
+            "cvc_check": "pass",
+            "address_line1_check": null,
+            "address_zip_check": null,
+            "dynamic_last4": null,
+            "metadata": {},
+            "customer": null
+          },
+          "captured": true,
+          "card": {
+            "id": "card_16G7Xh4E0ggiBrh4ag6sRN2N",
+            "object": "card",
+            "last4": "4242",
+            "brand": "Visa",
+            "funding": "credit",
+            "exp_month": 6,
+            "exp_year": 2018,
+            "fingerprint": "IUZs3RUUkrXeg5B2",
+            "country": "US",
+            "name": null,
+            "address_line1": null,
+            "address_line2": null,
+            "address_city": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_country": null,
+            "cvc_check": "pass",
+            "address_line1_check": null,
+            "address_zip_check": null,
+            "dynamic_last4": null,
+            "metadata": {},
+            "customer": null
+          },
+          "balance_transaction": "txn_16G7Xi4E0ggiBrh4GWzWb5C4",
+          "failure_message": null,
+          "failure_code": null,
+          "amount_refunded": 0,
+          "customer": null,
+          "invoice": null,
+          "description": "a valid charge",
+          "dispute": null,
+          "metadata": {},
+          "statement_descriptor": null,
+          "fraud_details": {},
+          "receipt_email": null,
+          "receipt_number": null,
+          "shipping": null,
+          "destination": null,
+          "application_fee": null,
+          "refunds": {
+            "object": "list",
+            "total_count": 0,
+            "has_more": false,
+            "url": "/v1/charges/ch_16G7Xi4E0ggiBrh4tJAHuD8l/refunds",
+            "data": []
+          },
+          "statement_description": null
+        }
+    http_version: '1.1'
+  recorded_at: Sun, 21 Jun 2015 12:37:00 GMT
+recorded_with: VCR 2.9.3
